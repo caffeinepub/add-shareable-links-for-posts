@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "ICP (Internet Computer) full-stack app template and initial social app (“Taz”) featuring Internet Identity auth, Motoko backend modules (authorization, blob storage, invite links), and a React+Tailwind+shadcn-ui frontend for profiles, caves (groups), chat, and posts with media. Project now also includes sharing functionality for both posts (shareable post links) and the app itself (shareable app link).",
+  "existing_features": [
+    {
+      "id": "IF-1",
+      "title": "Internet Identity authentication (frontend hook + actor integration)",
+      "synonyms": [
+        "II auth",
+        "Internet Identity sign-in"
+      ],
+      "description": "Frontend includes Internet Identity sign-in flow with hooks for auth state and authenticated canister actor usage.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-2",
+      "title": "Motoko authorization and access control mixins",
+      "synonyms": [
+        "authorization module",
+        "ACL"
+      ],
+      "description": "Backend includes authorization mixin and access-control logic to gate operations by identity/roles.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-3",
+      "title": "Motoko blob storage module with frontend StorageClient",
+      "synonyms": [
+        "media storage",
+        "file upload"
+      ],
+      "description": "Backend blob-storage canister module and frontend utilities/components to pick, upload, and render media.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-4",
+      "title": "Invite links module with join flow",
+      "synonyms": [
+        "invites",
+        "invite-link join"
+      ],
+      "description": "Backend invite-links module and frontend pages/panels for generating and consuming invite links to join a cave.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-5",
+      "title": "Caves (groups) UI: list, create, join, and invites panel",
+      "synonyms": [
+        "groups",
+        "rooms"
+      ],
+      "description": "Frontend pages and dialogs for browsing caves, creating a cave, joining via invite, and managing invites.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-6",
+      "title": "Chat in caves with message composer",
+      "synonyms": [
+        "cave chat",
+        "messaging"
+      ],
+      "description": "Cave chat page and message composer component for posting messages in a cave context.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-7",
+      "title": "Posts: feed, compose, post detail, and post cards",
+      "synonyms": [
+        "timeline",
+        "posting"
+      ],
+      "description": "Frontend supports composing posts, displaying a feed, rendering post cards, and viewing post details.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-8",
+      "title": "User profiles: setup modal, editor, and avatar component",
+      "synonyms": [
+        "profile management",
+        "user avatar"
+      ],
+      "description": "Profile setup and editing UI, including avatar display component and profile page.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-9",
+      "title": "App shell/navigation with loading/error/empty states",
+      "synonyms": [
+        "layout",
+        "navigation"
+      ],
+      "description": "Reusable app shell with navigation and standard UI states (loading, error, empty).",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-10",
+      "title": "Build template and project scaffolding (React, Tailwind, shadcn-ui, scripts, Docker/deploy)",
+      "synonyms": [
+        "scaffold",
+        "template"
+      ],
+      "description": "Includes build-template with React frontend scaffolding, shadcn-ui components, lint rules, image scripts, Dockerfile, and deploy configuration.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-small-frontend-utility-for-building-a-shareable-app-link-that-points-to-the-app-s-main-entry-route-using-the-current-hash-based-routing-convention-e-g-window-location-origin-reuse-the-existing-clipboard-helper-behavior-already-used-for-invite-links-copytoclipboard-in-frontend-src-utils-invitelinks-ts",
+      "title": "Add a small frontend utility for building a shareable app link that points to the app’s main entry route using the current hash-based routing convention (e.g., `window.location.origin + '/#/'`). Reuse the existing clipboard helper behavior already used for invite links (`copyToClipboard` in `frontend/src/utils/inviteLinks.ts`).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-user-facing-ui-action-to-share-the-app-itself-by-copying-the-app-link-to-the-clipboard-place-this-action-in-an-always-available-location-in-the-authenticated-app-shell-e-g-in-the-top-navigation-in-frontend-src-components-layout-appnav-tsx-use-english-user-facing-text-and-the-existing-toast-pattern-sonner-to-confirm-success-failure-e-g-success-app-link-copied-failure-failed-to-copy-link",
+      "title": "Add a user-facing UI action to share the app itself by copying the app link to the clipboard. Place this action in an always-available location in the authenticated app shell (e.g., in the top navigation in `frontend/src/components/layout/AppNav.tsx`). Use English user-facing text and the existing toast pattern (`sonner`) to confirm success/failure (e.g., success: “App link copied”, failure: “Failed to copy link”).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add share link functionality (e.g., generate/copy a shareable link for content such as posts).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add a stable, shareable identifier to posts in the Motoko backend so that post links do not break when new posts are created (i.e., do not use the feed array index as the public identifier).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add a backend query API to retrieve a single post by its stable id (for use by the post detail page opened from a shared link).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "If existing production state contains posts, add a conditional Motoko migration that preserves all existing posts by assigning stable ids deterministically during upgrade.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Update frontend routing to use the stable post id in the post detail route (replace the current '/post/$postIndex' usage with a stable id param), and update all links that navigate to a post detail page accordingly.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add a share-link UI action for posts that generates a shareable URL for the current post and copies it to the clipboard, using English user-facing text and existing toast patterns (sonner). Implement this on both the feed post card view and the post detail page view.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add a small URL-building utility for post share links that matches the app’s current hash-based routing convention (e.g., window.location.origin + '/#/post/{postId}'), reusing the existing clipboard helper behavior already used for invite links.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add a way to share the app itself (e.g., a UI action to copy/share the app’s main URL so users can invite others to the app, not just individual posts).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "architectural_notes": [
+    "Frontend: React + Vite + Tailwind + shadcn-ui component library.",
+    "Auth: Internet Identity used for user authentication; frontend uses actor-based canister calls.",
+    "Backend: Motoko modules composed in main canister (authorization, blob storage, invite links).",
+    "Media: Blob storage canister module with frontend StorageClient and renderer components.",
+    "Invites: Invite-link based cave joining flow supported end-to-end.",
+    "Build/Deploy: Repository includes build-template, Dockerfile, deploy script, and ICP canister YAML configs."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "generatedImages": [
+    {
+      "filename": "frontend/public/assets/generated/taz-app-icon.dim_512x512.png",
+      "description": "Generated application icon",
+      "targetWidth": 512,
+      "targetHeight": 512
+    },
+    {
+      "filename": "frontend/public/assets/generated/taz-bg-pattern.dim_1920x1080.png",
+      "description": "Generated background pattern image",
+      "targetWidth": 1920,
+      "targetHeight": 1080
+    },
+    {
+      "filename": "frontend/public/assets/generated/taz-logo.dim_1200x300.png",
+      "description": "Generated logo image",
+      "targetWidth": 1200,
+      "targetHeight": 300
+    }
+  ],
+  "projectName": "Add shareable links for posts",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

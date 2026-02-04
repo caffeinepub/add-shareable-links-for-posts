@@ -1,0 +1,47 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-small-frontend-utility-for-building-a-shareable-app-link-that-points-to-the-app-s-main-entry-route-using-the-current-hash-based-routing-convention-e-g-window-location-origin-reuse-the-existing-clipboard-helper-behavior-already-used-for-invite-links-copytoclipboard-in-frontend-src-utils-invitelinks-ts",
+      "featureTitle": "Add a small frontend utility for building a shareable app link that points to the app’s main entry route using the current hash-based routing convention (e.g., `window.location.origin + '/#/'`). Reuse the existing clipboard helper behavior already used for invite links (`copyToClipboard` in `frontend/src/utils/inviteLinks.ts`).",
+      "files": [
+        "frontend/src/utils/appShareLink.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "invite-links@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-user-facing-ui-action-to-share-the-app-itself-by-copying-the-app-link-to-the-clipboard-place-this-action-in-an-always-available-location-in-the-authenticated-app-shell-e-g-in-the-top-navigation-in-frontend-src-components-layout-appnav-tsx-use-english-user-facing-text-and-the-existing-toast-pattern-sonner-to-confirm-success-failure-e-g-success-app-link-copied-failure-failed-to-copy-link",
+      "featureTitle": "Add a user-facing UI action to share the app itself by copying the app link to the clipboard. Place this action in an always-available location in the authenticated app shell (e.g., in the top navigation in `frontend/src/components/layout/AppNav.tsx`). Use English user-facing text and the existing toast pattern (`sonner`) to confirm success/failure (e.g., success: “App link copied”, failure: “Failed to copy link”).",
+      "files": [
+        "frontend/src/components/layout/AppNav.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "invite-links@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

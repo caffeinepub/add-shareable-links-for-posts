@@ -1,0 +1,57 @@
+{
+  "kind": "build_request",
+  "title": "Add app share link (copy/share main URL)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "text": "Add a small frontend utility for building a shareable app link that points to the app’s main entry route using the current hash-based routing convention (e.g., `window.location.origin + '/#/'`). Reuse the existing clipboard helper behavior already used for invite links (`copyToClipboard` in `frontend/src/utils/inviteLinks.ts`).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "Add a way to share the app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A utility function exists that returns a string URL for sharing the app home (uses `window.location.origin` and `/#/`).",
+        "Copy-to-clipboard uses the existing `copyToClipboard` fallback implementation (no new clipboard implementation introduced)."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Add a user-facing UI action to share the app itself by copying the app link to the clipboard. Place this action in an always-available location in the authenticated app shell (e.g., in the top navigation in `frontend/src/components/layout/AppNav.tsx`). Use English user-facing text and the existing toast pattern (`sonner`) to confirm success/failure (e.g., success: “App link copied”, failure: “Failed to copy link”).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "Add a way to share the app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Authenticated users can trigger a “Share” action from the app navigation/shell UI.",
+        "Triggering the action copies the app share URL to the clipboard.",
+        "A success toast is shown on successful copy and an error toast is shown if copy fails.",
+        "All user-facing text for this feature is in English."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`, or anything inside `frontend/src/components/ui` (compose existing components instead).",
+    "Keep routing consistent with the app’s current hash-based URL format (e.g., `/#/`).",
+    "No backend changes are required for sharing the app link."
+  ],
+  "nonGoals": [
+    "Do not add third-party social sharing integrations (e.g., Twitter/Facebook APIs).",
+    "Do not add new authentication methods beyond Internet Identity.",
+    "Do not implement real-time share tracking/analytics."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add shareable app link + nav Share action",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "summary": "Create a frontend utility to build the app’s share URL (main entry route) using hash-based routing and reuse the existing clipboard helper.",
+      "acceptanceCriteria": [
+        "A utility function exists that returns a string URL for sharing the app home (uses `window.location.origin` and `/#/`).",
+        "Copy-to-clipboard uses the existing `copyToClipboard` fallback implementation (no new clipboard implementation introduced)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/appShareLink.ts",
+          "operation": "create",
+          "description": "Add a small utility that builds the app share URL pointing to the main entry route using the current hash-based convention (e.g., `window.location.origin + '/#/'`). Also export a helper that copies this URL by calling the existing `copyToClipboard` from `frontend/src/utils/inviteLinks.ts` (reuse its fallback behavior; do not introduce a new clipboard implementation)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Add an always-available “Share” action in the authenticated app navigation that copies the app share URL and shows success/failure toasts.",
+      "acceptanceCriteria": [
+        "Authenticated users can trigger a “Share” action from the app navigation/shell UI.",
+        "Triggering the action copies the app share URL to the clipboard.",
+        "A success toast is shown on successful copy and an error toast is shown if copy fails.",
+        "All user-facing text for this feature is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/AppNav.tsx",
+          "operation": "modify",
+          "description": "Add a user-facing “Share” action in the top navigation (always visible in the authenticated app shell). Wire it to the new app share-link utility to copy the app URL to the clipboard and use the existing `sonner` toast pattern to confirm outcomes with English text (success: “App link copied”, failure: “Failed to copy link”)."
+        }
+      ]
+    }
+  ]
+}
